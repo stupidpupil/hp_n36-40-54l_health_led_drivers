@@ -1,0 +1,6 @@
+sudo: required
+dist: trusty
+language: bash
+script:
+  - '/bin/sh build_all_debs.sh'
+  - 'sudo dpkg -i dist/*.deb'
