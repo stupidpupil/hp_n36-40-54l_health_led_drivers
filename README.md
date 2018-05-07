@@ -16,6 +16,11 @@ cd hp_n36-40-54l_health_led_drivers
 /bin/sh build_all_debs.sh
 sudo dpkg -i dist/*.deb
 
+# Remove the existing drivers and blacklist sp5100_tco
+sudo rmmod i2c_piix4
+sudo rmmod sp5100_tco
+echo "blacklist sp5100_tco" | sudo tee /etc/modprobe.d/blacklist-sp5100_tco.conf
+
 # Try the example script
 sudo /bin/sh n40_led.sh 0 100 # Switch the Health LED to orange
 sudo /bin/sh n40_led.sh 100 100 # Switch the Health LED to pink (blue+orange)
