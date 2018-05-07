@@ -44,7 +44,7 @@ Only very minor changes were required to get it to compile under Linux 4.9.
 
 You might want to investigate [fetzerch's repo for using sensors on the i2c bus](https://github.com/fetzerch/hp-n54l-drivers). Note that you don't need to use fetzerch's i2c-piix4 driver.
 
-Copyright (c) 1998 - 2002 Frodo Looijaard <frodol@dds.nl> and Philip Edelbrock <phil@netroedge.com>, and others shown on the GitHub link above.
+Copyright (c) 1998 - 2002 Frodo Looijaard and Philip Edelbrock, and others shown on the GitHub link above.
 
 ## gpio-sb8xx
 A driver to allow controlling the GPIO pins on the AMD SB820M southbridge. It was [submitted by Tobias Diedrich in 2015](https://patchwork.kernel.org/patch/6651771/), but was not included in the mainline kernel.
