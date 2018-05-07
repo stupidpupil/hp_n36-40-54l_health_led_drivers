@@ -8,9 +8,25 @@ ORANGE_PIN=187
 
 PWM_PERIOD=10000 #microseconds
 
+
+if ! modprobe i2c-piix4; then
+  echo "Couldn't insert i2c-piix4 driver"
+  exit 1
+fi
+
+if ! modprobe gpio-sb8xx; then
+  echo "Couldn't insert gpio-sb8xx driver"
+  exit 1
+fi
+
+if ! modprobe softpwm; then
+  echo "Couldn't insert softpwm driver"
+  exit 1
+fi
+
 if ! BASE=$(cat "/sys/class/gpio/gpiochip256/base"); then
   echo "Couldn't determine gpio pin base"
-  exit
+  exit 1
 fi
 
 BLUE_PIN=$((BASE+BLUE_PIN))
