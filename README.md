@@ -1,6 +1,27 @@
+# Health LED for HP Microservers N36L/N40L/N54L
+
 This repository contains 3 drivers intended for use in HP Microservers N36L/N40L/N54L to allow control of their 'Health LED'.
 
-They are packaged as [DKMS](https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support) modules, and a script is provided to cobble them into Debian packages.
+They are packaged as [DKMS](https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support) modules, a script is provided to cobble them into Debian packages, and another script is provided as an example.
+
+## Installation
+```sh
+# Install requirements
+sudo apt-get install -qq fakeroot dkms
+sudo apt install linux-headers-$(uname -r)
+
+# Install the drivers
+git clone https://github.com/stupidpupil/hp_n36-40-54l_health_led_drivers.git
+cd hp_n36-40-54l_health_led_drivers
+/bin/sh build_all_debs.sh
+sudo dpkg -i dist/*.deb
+
+# Try the example script
+sudo /bin/sh n40_led.sh 0 100 # Switch the Health LED to orange
+sudo /bin/sh n40_led.sh 100 100 # Switch the Health LED to pink (blue+orange)
+sudo /bin/sh n40_led.sh 5 5 # Reduce the brightness of the pink
+
+```
 
 ## About the Health LED
 The 'Health LED' contains three different coloured LEDs - blue, orange and red - as far as I know.
@@ -21,7 +42,7 @@ A backported version of [04b6fca](https://github.com/torvalds/linux/commit/04b6f
 
 Only very minor changes were required to get it to compile under Linux 4.9.
 
-You might want to investigate [fetzerch's repo for using sensors on the i2c bus](https://github.com/fetzerch/hp-n54l-drivers).
+You might want to investigate [fetzerch's repo for using sensors on the i2c bus](https://github.com/fetzerch/hp-n54l-drivers). Note that you don't need to use fetzerch's i2c-piix4 driver.
 
 Copyright (c) 1998 - 2002 Frodo Looijaard <frodol@dds.nl> and Philip Edelbrock <phil@netroedge.com>, and others shown on the GitHub link above.
 
