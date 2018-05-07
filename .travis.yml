@@ -3,6 +3,7 @@ dist: trusty
 language: bash
 before_install:
   - 'sudo apt-get install -qq fakeroot dkms'
+  - 'sudo apt install linux-headers-$(uname -r)'
 script:
   - '/bin/sh build_all_debs.sh'
   - 'sudo dpkg -i dist/*.deb'
