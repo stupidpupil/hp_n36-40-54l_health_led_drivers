@@ -1,6 +1,8 @@
 sudo: required
 dist: trusty
 language: bash
+before_install:
+  - 'sudo apt-get install -qq fakeroot dkms'
 script:
   - '/bin/sh build_all_debs.sh'
   - 'sudo dpkg -i dist/*.deb'
