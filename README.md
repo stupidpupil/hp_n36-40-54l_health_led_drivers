@@ -7,7 +7,10 @@ The 'Health LED' contains three different coloured LEDs - blue, orange and red -
 I don't know how to control the red LED, but the blue and orange LEDs are 
 controlled using the general-purpose-input-output (GPIO) pins from the southbridge (AMD SB820M) of the motherboard itself.
 
-Specifically the blue LED is controlled using pin 188 and the orange LED is controlled using pin 187. 
+Specifically:
+* the blue LED is controlled using pin 188 and 
+* the orange LED is controlled using pin 187. 
+
 (These pins are also one of the SMBus/i2c pairs - 'port 4' on the main SMBus controller. 
 In other versions of the southbridge they're also used for PS/2 ports. This is documented in the [AMD SB820M Southbridge Databook](https://support.amd.com/TechDocs/47283.pdf).)
 
