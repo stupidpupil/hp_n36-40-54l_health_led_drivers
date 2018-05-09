@@ -79,7 +79,7 @@
 #define PIIX4_BLOCK_DATA	0x14
 
 /* Multi-port constants */
-#define PIIX4_MAX_ADAPTERS 4
+#define PIIX4_MAX_ADAPTERS 3 //HACK: Disable port 4 (GPIO 187, 188)
 
 /* SB800 constants */
 #define SB800_PIIX4_SMB_IDX		0xcd6
