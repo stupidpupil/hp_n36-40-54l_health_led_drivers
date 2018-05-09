@@ -45,7 +45,7 @@ In other versions of the southbridge they're also used for PS/2 ports. This is d
 ## i2c-piix4
 A backported version of [04b6fca](https://github.com/torvalds/linux/commit/04b6fcaba346e1ce76321ba9b0fd549da4c37ac2), likely to appear in Linux 4.17. Importantly, this allows other drivers to access shared parts of the AMD SB820M southbridge.
 
-Only very minor changes were required to get it to compile under Linux 4.9.
+Only very minor changes were required to get it to compile under Linux 4.9. I have also (crudely) disabled 'port 4' on the main SMBus controller in the driver, as in the N36L/N40L/N54L the relevant pins are used as GPIO to control the Health LED.
 
 You might want to investigate [fetzerch's repo for using sensors on the i2c bus](https://github.com/fetzerch/hp-n54l-drivers). Note that you don't need to use fetzerch's i2c-piix4 driver.
 
