@@ -2,8 +2,18 @@ sudo: required
 dist: trusty
 language: bash
 before_install:
-  - 'sudo apt-get install -qq fakeroot dkms'
-  - 'sudo apt install linux-headers-$(uname -r)'
+  - sudo apt-get install -qq fakeroot dkms
+  - sudo apt install linux-headers-$(uname -r)
 script:
-  - '/bin/sh build_all_debs.sh'
-  - 'sudo dpkg -i dist/*.deb'
+  - /bin/sh build_all_debs.sh
+  - sudo dpkg -i dist/*.deb
+deploy:
+  provider: releases
+  file_glob: true
+  file: dist/*.deb
+  skip_cleanup: true
+  api-key:
+    secure: JIsmoQccf/RbeZwNvQk3ssuvQ48qVpbij+Hm2XJULHhC7GAU+W2BKam6E5YkiJY3tE3BxZKVGecDJ+Iks0qPtzE9B7swnjjAxVahtrWsmPzoh2tQE5YZvyyVSNSjnBVAfviMFcaRW8YJ0tzxDG/XlVcWy6kvhBiNiSJ9qu5oUbd7PP5LOGgQjiEEmFt7HyWUId6X5DMdYsj1xJW7VvJ+IECooofQHpAkNjpUTWRmRg2yz0wId95FblLUuABxEdhGaGvGak4vQ3887f8d+EvQ0g74t8IaoRHQZHJde6vaqaSZPAewWKVwrXUVnjJ785kbe0G4TD/uuLHPwXArQHOdPDMcFte+nN2YQb0c7jcKiWqQK1ndpRaD0mLQMbJmleDGbSlUU4uGLPZgjMeaHEkv2qLetf9hoyQI4nLBqN6yvUVoEhw0InJLMywnmH/CQ3x9ZuUaWBbcW/aDXz8iuppnR4t9zB8yyRtyY6rGXu2iPlZFdZimH+YHvAA3DFGl24Fw0nz5Yl19N6yCUjaJ5zpXQAbeWYRGQKAG8o5MdhrtidOzAyE5KpaydxFI9xlf9QgDTnw7kz2vwEoC3NB06jQ9GrvncczsVpSxwNmBQMc7ADojcmZDiGGXW/b4YyG5og0TcQcyhM/oU9JLsTpDAqJQoNdkCMsrb6yR33uRnJ1DYKg=
+  on:
+    repo: stupidpupil/hp_n36-40-54l_health_led_drivers
+    tags: true
