@@ -8,6 +8,24 @@ ORANGE_PIN=187
 
 PWM_PERIOD=10000 #microseconds
 
+BIOS_YEAR=$(cut -d "/" -f 3 /sys/class/dmi/id/bios_date)
+BIOS_MONTH=$(cut -d "/" -f 1 /sys/class/dmi/id/bios_date)
+BIOS_DAY=$(cut -d "/" -f 2 /sys/class/dmi/id/bios_date)
+
+MIN_BIOS_DATE=20110729
+
+if ! (echo "$BIOS_YEAR-$BIOS_MONTH-$BIOS_DAY" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$') ; then
+  echo "Couldn't understand BIOS date"
+  echo "BIOS date should be 07/29/2011 or later"
+  exit 1
+fi
+
+BIOS_DATE=$((BIOS_YEAR*10000+BIOS_MONTH*100+BIOS_DAY))
+
+if [ $((BIOS_DATE < MIN_BIOS_DATE)) -eq 1 ]; then
+  echo "BIOS date should be 07/29/2011 or later"
+  exit 1
+fi
 
 if ! modprobe i2c-piix4; then
   echo "Couldn't insert i2c-piix4 driver"
