@@ -1,6 +1,6 @@
 Package: i2c-piix4-dkms
 Maintainer: Adam Watkins
-Description: dkms source for the gpio-sb8xx gpio driver
+Description: dkms source for the backported i2c-piix4 driver
 Architecture: all
 Priority: optional
 Section: kernel
