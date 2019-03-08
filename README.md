@@ -43,7 +43,7 @@ In other versions of the southbridge they're also used for PS/2 ports. This is d
 ### Older versions of the BIOS
 Older versions of the BIOS for N36L/N40L/N54L's don't seem to support accessing these GPIO pins. These drivers are known to work on at least the *07/29/2011* version of the BIOS. 
 
-You can check what version your machine is running with the command `sudo dmidecode --string "bios-release-date"`, or by booting into the *ROM-BASED SETUP UTILITY* (by pressing F10 at startup) and checking the *BIOS Version* shown.
+You can check what version your machine is running with the command `cat /sys/class/dmi/id/bios_date`, or by booting into the *ROM-BASED SETUP UTILITY* (by pressing F10 at startup) and checking the *BIOS Version* shown.
 
 ## The drivers
 
