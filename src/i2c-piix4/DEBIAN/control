@@ -1,5 +1,6 @@
 Package: i2c-piix4-dkms
 Maintainer: Adam Watkins
+Homepage: https://github.com/stupidpupil/hp_n36-40-54l_health_led_drivers
 Description: dkms source for the backported i2c-piix4 driver
 Architecture: all
 Priority: optional
