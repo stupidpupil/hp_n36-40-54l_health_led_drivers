@@ -1,7 +1,7 @@
 Package: gpio-sb8xx-dkms
 Maintainer: Adam Watkins
 Homepage: https://github.com/stupidpupil/hp_n36-40-54l_health_led_drivers
-Description: dkms source for the gpio-sb8xx gpio driver
+Description: dkms source for the AMD SB8xx gpio driver
 Architecture: all
 Priority: optional
 Section: kernel
